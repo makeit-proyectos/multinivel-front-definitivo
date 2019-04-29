@@ -29,7 +29,7 @@
                 <tbody>
 
                     <tr *ngFor="let pedido of categoria.pedidos">
-                        <th><input type="checkbox" value="{{pedido.codigo}}" checked="cargarLinea({{pedido.codigo}})"></th>
+                        <th><input type="checkbox" value="{{pedido.codigo}}" (change)="cargarLinea($event,pedido.codigo)"></th>
                         <th scope="row">{{pedido.codigo}}</th>
                         <td>{{pedido.cantidad}}</td>
                         <td>{{pedido.costoU| currency: 'USD':true:'1.2-2'}}</td>

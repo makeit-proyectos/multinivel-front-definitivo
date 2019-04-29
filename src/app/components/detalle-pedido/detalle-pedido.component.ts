@@ -23,9 +23,13 @@ export class DetallePedidoComponent implements OnInit {
 
   ngOnInit() {
   }
-  cargarLinea(codigo:number){
-  
-    (<FormArray>this.formElimLinea.controls['linea']).push(new FormControl(codigo))
+  cargarLinea(cargar:any,codigo:number){
+    if(cargar.target.checked){
+      (<FormArray>this.formElimLinea.controls['linea'])
+        .push(new FormControl(codigo))
+    
+    }
+    console.log(this.formElimLinea.value['linea'])
   }
   eliminarLineas(){
     console.log(this.formElimLinea.value)
