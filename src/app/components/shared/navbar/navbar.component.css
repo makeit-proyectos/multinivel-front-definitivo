@@ -1,0 +1,17 @@
+    .navbar {
+        background-color: blueviolet;
+        color: white;
+        font-family: 'Lucida Sans';
+    }
+    
+    i {
+        display: inline
+    }
+    
+    .row {
+        display: contents;
+    }
+    
+    .icons {
+        white-space: normal;
+    }

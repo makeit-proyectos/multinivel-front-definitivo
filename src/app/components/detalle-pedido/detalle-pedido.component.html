@@ -1,0 +1,50 @@
+<div class="container m-2">
+    <div class="text-center col-9">
+        <p><small>
+          Para pedidos mayores a 12 <br> unidades, el envio es gratis
+      </small>
+        </p>
+    </div>
+    <h3>Detalle del pedido</h3>
+    <form [formGroup]="formElimLinea" (ngSubmit)="eliminarLineas()">
+        <div class="row" *ngFor="let categoria of categorias">
+            <div class="col-4">
+                <h6>
+                    {{categoria.categoria|uppercase}}
+                </h6>
+                <img src="/assets/img/{{categoria.categoria}}.png" class="img-cat" alt="">
+            </div>
+
+            <table class="table col-8">
+                <thead>
+                    <tr>
+                        <th scope="col"><i class="fa fa-trash" aria-hidden="true"></i></th>
+                        <th scope="col">Referencia</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Precio Un.</th>
+                        <th scope="col">Sub-Total</th>
+                        <th scope="col">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let pedido of categoria.pedidos">
+                        <th><input type="checkbox" value="{{pedido.codigo}}" checked="cargarLinea({{pedido.codigo}})"></th>
+                        <th scope="row">{{pedido.codigo}}</th>
+                        <td>{{pedido.cantidad}}</td>
+                        <td>{{pedido.costoU| currency: 'USD':true:'1.2-2'}}</td>
+                        <td>{{ (pedido.cantidad * pedido.costoU)| currency: 'USD':true:'1.2-2'}}</td>
+                        <td rowspan=""></td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+
+        </div>
+        <button class="btn btn-outline-warning" type="submit">Eliminar</button>
+    </form>
+    <div class="alignCentro">
+        <button class="btn-violeta">Pagar</button>
+    </div>
+</div>

@@ -1,0 +1,65 @@
+<div class="container m-2">
+    <div class="text-center col-9">
+        <p><small>
+            Para pedidos mayores a 12 <br> unidades, el envio es gratis
+        </small>
+        </p>
+    </div>
+
+    <div class="row" *ngFor="let grupo of articulosxCat, let i=index" style="margin-bottom: 2%">
+
+        <div class="col-3 text-center alignCentro">
+            <label class="">
+              {{grupo.categoria|uppercase}}
+                </label>
+            <!-- src/assets/img/esmalte.png
+                src/assets/img/perfume.png -->
+            <img src="/assets/img/{{grupo.categoria}}.png" class="img-cat" alt="">
+
+        </div>
+        <form (ngSubmit)="agregarPedido(form)" class="col" #form="ngForm">
+            <div class="form-inline linea">
+                <div class="col-6">
+                    <input [(ngModel)]="grupo.categoria" name="categoria" value="{{grupo.nombre}}" style="display:none">
+                    <!-- Para agregar un item o linea de pedido al hacer click en el boton +, se agrega un elemento mas al atributo del component sobre el cual itera el siguiente ngfor correspondiente a distintas lineas de pedido de una misma categoria-->
+                    <div class=" alignCentro" [ngClass]="grupo.nombre" *ngFor="let Linea of grupo.LineadePedidos, let x=index" style="display: block">
+
+                        <input [(ngModel)]="grupo.LineadePedidos[x].codigo" name="codigoL{{x}}" type="text" placeholder="Codigo o fragancia" class="form-control" />
+
+
+                        <input [(ngModel)]="grupo.LineadePedidos[x].cantidad" name="cantidadL{{x}}" type="number" min='0' placeholder="Cant." class="form-control ">
+
+                        <div class="w-100"></div>
+                    </div>
+                </div>
+
+                <div class="col-2 alignCentro">
+                    <button type="button" class="btn-add btn-outline-primary" (click)="agregarLinea(grupo.categoria)" style="margin-left:2%">+</button>
+
+                </div>
+
+                <div class="col-3 alignCentro ">
+                    <button style="display: block" type="submit" class="btn-violeta btn-primary">Agregar</button>
+                    <div style="display: block; margin-left: 3%">
+                        <i class="material-icons" style="font-size:40px;"> shopping_cart</i>
+                    </div>
+
+
+
+
+                </div>
+
+            </div>
+
+        </form>
+
+
+
+    </div>
+
+
+
+
+
+
+</div>

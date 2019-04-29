@@ -1,0 +1,30 @@
+    /* You can add global styles to this file, and also import other style files */
+    
+    .btn-violeta {
+        background-color: #8A2BE2!important;
+        border-width: 3px;
+        border-color: black!important;
+        border-radius: 20px;
+        padding-left: 30px;
+        padding-right: 30px;
+        color: white;
+    }
+    
+    .alignCentro {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    a {
+        color: currentColor;
+    }
+    
+    a:hover {
+        color: rgb(177, 101, 248)
+    }
+    
+    .img-cat {
+        width: 45%;
+        margin-left: 3%;
+    }

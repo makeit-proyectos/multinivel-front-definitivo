@@ -1,0 +1,384 @@
+<div class="container mb-4 mt-4 align-content-center ">
+
+    <div class="accordion" id="accordionExample">
+        <form [formGroup]="nuevoUsuario" (ngSubmit)="guardarUsuario()" #form>
+            <!-- datos personales -->
+            <div class="card" formGroupName="asociado">
+                <div class="card-header" id="headingOne">
+                    <h3 class="mb-0">
+                        <div data-toggle="collapse" data-target="#collapseOne">
+                            1.Datos personales
+                        </div>
+                    </h3>
+                </div>
+                <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <p class="text-center "><small>Todos los campos marcados con asterisco son obligatorios</small></p>
+                        <div class="row">
+                            <div class="col">
+                                <label for="">*Nombre </label>
+
+                                <input type="text" class="form-control" formControlName="nombre">
+                            </div>
+
+                            <!-- Material input -->
+                            <!-- <div class=" col md-form">
+                                <label for="">Nombre</label><br><br>
+                                <input type="text" class="form-control" placeholder="Ingrese nombre" id="form1" formControlName="nombre">
+
+                            </div> -->
+
+                            <div class="col">
+                                <label for="">*Apellidos </label>
+
+                                <input type="text" class="form-control" formControlName="apellido">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for=""> *Tipo de documento: </label>
+
+                                <select class="form-control" formControlName="tipoDoc">
+                                    <option *ngFor="let tipo of tipoDoc" [ngValue]='tipo'>{{tipo|uppercase}}</option>
+                                    
+                                    
+                                  </select>
+
+
+                            </div>
+                            <div class="col">
+                                <label for="">*Nº de documento </label>
+
+                                <input type="text" class="form-control" formControlName="nroDoc">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for=""> *Teléfono celular: </label>
+                                <input type="text" class="form-control" formControlName="celular">
+                            </div>
+                            <div class="col">
+                                <label for="">*Correo electronico: </label>
+
+                                <input type="text" class="form-control" formControlName="correo">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6" style="padding-left:0px; ">
+                                <label for=""> *Fecha de nacimiento </label>
+                                <input type="date" class="form-control" formControlName="fechaNac">
+                            </div>
+                            <div class="col" style="margin:0px; padding: 0px; text-align: center">
+
+                                <input type="checkbox" (change)="aceptarTerm()" #term>
+
+                            </div>
+                            <div class="col-sm-5 ">
+                                <p class="text-justify ">Acepto que he leido los terminos y condiciones y autorizo a PaulaColombia a realizar el tratamiento de mis datos personale, de conformidad a la normativa vigente</p>
+                            </div>
+                        </div>
+                        <div class="alert alert-danger text-center" role="alert" *ngIf="!nuevoUsuario.controls['asociado'].valid && termYCond">
+                            Debe completar los campos con *
+                        </div>
+                        <div class="col text-center m-3 ">
+                            <button type="button" class="btn-violeta btn-primary " data-toggle="collapse" data-target="#collapse2" (click)="guardarDPersonal()" [disabled]="termYCond==false">Continuar</button>
+                            <!--   -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- datos del referente -->
+            <div class="card" formGroupName="referente">
+                <div class="card-header " id="heading2 ">
+                    <h3 class="mb-0 ">
+                        <div data-toggle="collapse" data-target="#collapse2">
+                            2. Quien te recomienda
+                        </div>
+                    </h3>
+                </div>
+                <div id="collapse2" style="padding:20px " class="collapse" aria-labelledby="heading2" data-parent="#accordionExample">
+                    <div class="card-body ">
+                        <p class="text-center "><b> Encuentra una Consultora Independiente cerca de ti, ella te asesorara y guiará en tu negocio y siempre te brindará su apoyo y estará a tu disposición para ayudarte.</b></p>
+                        <p class="text-center ">¿Ya conoces a una Consultora Independiente con quien te gustaria iniciar tu negocio?</p>
+                        <div class="text-center ">
+
+                            <input type="radio" name="opc" value="true" (click)="conoceReferente(true)"> Si
+                            <input type="radio" name="opc" value="false" (click)="conoceReferente(false)" style="margin-left: 30px; "> No
+
+
+
+                        </div>
+                        <form [formGroup]="formReferente">
+                            <div #opc1 *ngIf="opc">
+                                <p><b>Busca a tu recomendante</b></p>
+                                <p>Ingresa su nombre y apellido</p>
+                                <div class="row ">
+                                    <div class="col-md-6">
+                                        <label for="">Nombre:</label>
+
+                                        <input type="text" class="form-control" formControlName="nombre">
+                                    </div>
+                                    <div class="col-md-6 ">
+                                        <label for="">Apellidos:</label>
+
+                                        <input type="text" class="form-control" formControlName="apellido">
+                                    </div>
+                                </div>
+                                <div class="row ">
+                                    <div class="col-md-6 ">
+                                        <label for=""> ó ingresa su codigo:</label>
+
+                                        <input type="text" class="form-control" formControlName="id">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div #opc2 *ngIf="!opc">
+                                <p><b>Busca a tu recomendante</b></p>
+                                <p>
+                                    Selecciona una zona para encontrar una Consultora Independiente. Si no encuentras tu localidad, elige la mas cercana.
+                                </p>
+                                <div formGroupName="ubicacion">
+                                    <div class="row ">
+                                        <div class="col-md-6">
+                                            <label for="">Departamento:</label>
+
+                                            <input type="text" class="form-control" formControlName="depto">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="">Ciudad:</label>
+                                            <input type="text" class="form-control" formControlName="ciudad">
+                                        </div>
+                                    </div>
+                                    <div class="row ">
+                                        <div class="col-md-6">
+                                            <label for="">Barrio:</label>
+                                            <input type="text" class="form-control" formControlName="barrio">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col text-center m-3 ">
+                                <button type="button " class="btn-violeta btn-primary " (click)="buscarReferente()">Buscar</button>
+                            </div>
+                        </form>
+                        <div>
+
+                            Selecciona una consultora independiente del listado:
+                            <table class="table table-striped ">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Departamento</th>
+                                        <th scope="col">Ciudad</th>
+                                        <th scope="col">Barrio</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let referente of referentes">
+                                        <th scope="row">
+                                            <input type="radio" value="{{referente.id}}" formControlName="id">
+                                            <input type="text" value="" style="display: none">
+                                        </th>
+                                        <td>{{referente.nombre}}</td>
+                                        <td>{{referente.depto}}</td>
+                                        <td>{{referente.ciudad}}</td>
+                                        <td>{{referente.barrio}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="alert alert-warning" role="alert" *ngIf="noEncontrado">
+                            No se ha encontrado Consultor con los datos ingresados. Vuelva a intentarlo.
+                        </div>
+
+
+                        <div class="col text-center m-3 ">
+                            <button type="button" class="btn-violeta btn-primary " data-toggle="collapse" data-target="#collapse3" [disabled]="nuevoUsuario.controls['referente'].valid==false">Continuar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- datos complementarios -->
+            <div class="card" formGroupName="complementario">
+                <div class="card-header " id="heading3 ">
+                    <h3 class="mb-0 ">
+                        <div data-toggle="collapse" data-target="#collapse3 ">
+                            3. Datos complementarios
+                        </div>
+                    </h3>
+                </div>
+                <div id="collapse3" class="collapse " aria-labelledby="heading3 " data-parent="#accordionExample">
+                    <div class="card-body ">
+                        <p class="text-center "><small>Todos los campos marcados con asterisco son obligatorios</small></p>
+
+                        <div class="row ">
+                            <div class="col-md-6 ">
+                                <label for=" " class="labForm ">*Nombre favorito:</label>
+
+                                <input type="text" class="form-control" formControlName="alias">
+                            </div>
+                            <div class="col-md-6">
+                                <label for=" ">*Telefono fijo:</label>
+                                <input type="text" class="form-control" formControlName="telefono">
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-md-6 ">
+                                <label class="labForm" for=" "> Género:</label>
+                                <input type="radio" name="genero" formControlName="genero" value="f"> Femenino
+                                <input type="radio" name="genero" formControlName="genero" value="m"> Masculino
+                            </div>
+
+                        </div>
+                        <div style="margin-top:20px " formGroupName="domicilio">
+                            <label for=" "><h5>Dirección de domicilio:</h5></label>
+
+                            <div class="row ">
+                                <div class="col-md-6 ">
+                                    <label for=" ">*Departamento: </label>
+                                    <input type="text" class="form-control" formControlName="depto">
+                                </div>
+                                <div class="col-md-6 ">
+                                    <label for=" ">*Ciudad:</label>
+                                    <input type="text" class="form-control" formControlName="ciudad">
+                                </div>
+
+                            </div>
+
+                            <div class="row ">
+                                <div class="col-md-6 ">
+                                    <label for=" ">*Barrio</label>
+                                    <input type="text" class="form-control" formControlName="barrio">
+                                </div>
+                                <div class="col-md-6 ">
+                                    <label for=" ">*Dirección</label>
+                                    <input type="text" class="form-control" formControlName="direccion">
+                                </div>
+
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for=" ">*Tipo de vía</label>
+                                    <input type="text" class="form-control" formControlName="via">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for=" ">Referencia</label>
+                                    <input type="text" class="form-control" formControlName="referencia">
+                                </div>
+
+                            </div>
+                            <div class="mt-3">
+                                <label>¿Dirección de reparto distinta a la direccion de domicilio?</label>
+                                <!-- formControlName="mismoLugar" -->
+                                <div>
+                                    <input type="radio" name="mismoLugar" formControlName="mismoLugar" value="si">Si
+                                    <input type="radio" name="mismoLugar" formControlName="mismoLugar" value="no">No
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col text-center m-3 ">
+                            <button type="button" data-toggle="collapse" data-target="#collapse4" class="btn-violeta btn-primary " [disabled]="nuevoUsuario.controls['complementario'].invalid">Continuar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Confirmar -->
+            <div class="card ">
+                <div class="card-header " id="heading4 ">
+                    <h3 class="mb-0 ">
+                        <div data-toggle="collapse" data-target="#collapse4">
+                            4. Resumen y confirmación
+                        </div>
+                    </h3>
+                </div>
+                <div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <div data-spy='scroll'>
+                            <p class="text-center "><small>CONTRATO DE VENDEDOR INDEPENDIENTE</small></p>
+                            <p>
+                                <b>Paula Colombia</b> Compañia
+
+                            </p>
+                        </div>
+                        <input type="checkbox"> Acepto contrato de vendedor independiente.
+                        <div class="col text-center m-3 ">
+                            <button data-toggle="collapse" data-target="#collapse5" type="button" class="btn-violeta btn-primary ">Continuar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Usuario y contraseña -->
+            <div class="card" formGroupName="usuario">
+                <div class="card-header" id="heading5">
+                    <h3 class="mb-0">
+                        <div data-toggle="collapse" data-target="#collapse5">
+                            5. Nombre de usuario y contraseña
+                        </div>
+                    </h3>
+                </div>
+                <div id="collapse5" class="collapse" aria-labelledby="heading5" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <p class="text-center">Visita tu perfil en <b>Paula colombia</b> y anímate a realizar tu primer pedido</p>
+                        <p><b>Elige un nombre de usuario y contraseña: </b></p>
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="">Nombre de usuario:</label>
+
+                                <input #usuario type="text" class="form-control" formControlName="nombre" (keyup)="verificarNombreUsuario(usuario.value)">
+                            </div>
+                            <div class="col-6">
+                                <div class="alert alert-warning mt-3" role="alert" *ngIf="existe">
+                                    Ya existe el usuario ingresado.
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="">Contraseña:</label>
+                                <input type="password" class="form-control" formControlName="password">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="">Confirmar contraseña:</label>
+
+                                <input type="password" class="form-control">
+
+                            </div>
+
+                        </div>
+                        <div class="col text-center m-3 ">
+                            <button type="submit" class="btn-violeta btn-primary">VISITAR EL PERFIL</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+
+
+
+<!-- id-name-alias-email-hora-password-remembertoken-horarioModCreacion -->

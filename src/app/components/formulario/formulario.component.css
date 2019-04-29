@@ -1,0 +1,54 @@
+.col {
+    padding-left: 0px;
+    padding-right: 0px
+}
+
+;
+.colapse {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.card-body {
+    padding-left: 5%;
+    padding-right: 5%
+}
+
+label {
+    display: block;
+}
+
+input[type='text'],
+select {
+    width: 95%;
+    border-radius: 5px;
+}
+
+input[type='radio'] {
+    margin-left: 3%
+}
+
+.row {
+    margin-top: 10px;
+}
+
+.navItem {
+    background-color: blueviolet;
+    border-radius: 80%
+}
+
+.circulo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.card-head,
+h3 {
+    text-align: center
+}
