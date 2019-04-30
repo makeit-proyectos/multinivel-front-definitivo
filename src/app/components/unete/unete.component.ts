@@ -13,7 +13,7 @@ export class UneteComponent implements OnInit {
   ngOnInit() {
   }
   goUnete(){
-    this.route.navigate(['/registrarse'])
+    this.route.navigate(['/signup'])
   }
 
 }

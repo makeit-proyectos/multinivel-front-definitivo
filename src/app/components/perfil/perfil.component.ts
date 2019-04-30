@@ -11,7 +11,7 @@ import { PerfilService } from 'src/app/services/perfil.service';
   styleUrls: ['./perfil.component.css']
 })
 export class PerfilComponent implements OnInit {
-  datos:any[];
+  datos:Object;
   
   constructor(private actRoute: ActivatedRoute, private perfilService: PerfilService) { 
     this.getDatos()
@@ -22,13 +22,13 @@ export class PerfilComponent implements OnInit {
   }  
 
   getDatos():any{
-    this.actRoute.parent.params.subscribe(
-      params=>{
-        console.log(params['id'])
-        this.datos= this.perfilService.getPerfil(params['id'])
-      }
-    )
-
+    // this.actRoute.parent.params.subscribe(
+    //   params=>{
+    //     console.log(params['id'])
+    //     this.datos= this.perfilService.getPerfil(params['id'])
+    //   }
+    // )
+    this.datos= this.perfilService.getPerfil() //id tendra que ser tomado de la var sesion
   } 
 
 }

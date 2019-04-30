@@ -9,9 +9,12 @@ import { FormControl, FormGroup, FormArray } from '@angular/forms';
 })
 export class DetallePedidoComponent implements OnInit {
   formElimLinea:FormGroup;
-  categorias:any[];
+  categorias:any[]=[];
   constructor(private pedidoService: PedidoService) {
-    this.categorias=this.pedidoService.getCategorias();
+    this.pedidoService.getCategorias().subscribe(res=>{
+      console.log(res);
+      this.categorias.push(res)
+    });
     this.formElimLinea=new FormGroup({
       linea:new FormArray([])
     })
@@ -32,7 +35,14 @@ export class DetallePedidoComponent implements OnInit {
     console.log(this.formElimLinea.value['linea'])
   }
   eliminarLineas(){
-    console.log(this.formElimLinea.value)
+    this.pedidoService.eliminarLinea(this.formElimLinea.value['linea']);
+    this.categorias=[];
+    this.pedidoService.getCategorias().subscribe(
+      categoria=>{
+        this.categorias.push(categoria);
+      }
+    )
+    console.log(this.formElimLinea.value['linea'])
   }
 
 

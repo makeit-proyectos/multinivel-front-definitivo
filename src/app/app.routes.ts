@@ -17,10 +17,10 @@ import { DetallePedidoComponent } from './components/detalle-pedido/detalle-pedi
 
 
 const routes: Routes = [
-    { path: 'signup', component: FormularioComponent },
-    // {path:'signup', component:UneteComponent},
+    { path: 'form', component: FormularioComponent },
+    {path:'signup', component:UneteComponent},
     { path: 'signin', component: LoginComponent},
-    {path:'home/:id', component:UserLayoutComponent,children:[
+    {path:'home', component:UserLayoutComponent,children:[
         {path:'perfil', component:PerfilComponent},
         {path:'comision', component:ComisionComponent},
         {path:'pedidos', component:PedidosComponent},
@@ -28,7 +28,7 @@ const routes: Routes = [
         {path:'detalle', component:DetallePedidoComponent},
         {path:'**', component:PerfilComponent}
     ]},
-    { path: '**', component: UserLayoutComponent }
+    { path: '**', redirectTo:'home/perfil'}
 
     //{ path: 'path/:routeParam', component: MyComponent },
     //{ path: 'staticPath', component: ... },
@@ -38,10 +38,6 @@ const routes: Routes = [
 ];
 
      
-// @NgModule({
-//     imports: [RouterModule.forRoot(routes)],
-//     exports: [RouterModule]
-// })
-// export class FeatureRoutingModule { }
+
  
 export const app_routes=RouterModule.forRoot(routes)
