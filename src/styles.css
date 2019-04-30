@@ -2,7 +2,7 @@
     
     .btn-violeta {
         background-color: #8A2BE2!important;
-        border-width: 3px;
+        border-width: 2px;
         border-color: black!important;
         border-radius: 20px;
         padding-left: 30px;
@@ -27,4 +27,41 @@
     .img-cat {
         width: 45%;
         margin-left: 3%;
+    }
+    
+    .btn-outline-primary {
+        border-radius: 20px;
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-bottom: 2px;
+        padding-top: 2px;
+        text-transform: none;
+    }
+    /* Animaciones */
+    
+    .animated {
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+    }
+    
+    .fast {
+        -webkit-animation-duration: 0.4s;
+        animation-duration: 0.4s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    
+    .fadeIn {
+        animation-name: fadeIn;
     }

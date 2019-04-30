@@ -21,9 +21,7 @@ import { FooterComponent } from './components/shared/footer/footer.component';
 
 
 import { PerfilService } from './services/perfil.service';
-import { NewProdDirective } from './components/pedidos/new-prod.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DynamicComponent } from './components/pedidos/dynamic.component';
 import { DetallePedidoComponent } from './components/detalle-pedido/detalle-pedido.component';
 
 //servicios
@@ -38,7 +36,7 @@ import { RegistrarService } from './services/registrar.service';
     FormularioComponent,
     UneteComponent,
     LoginComponent,
-    SidebarComponent,
+    
     PerfilComponent,
     ComisionComponent,
     PedidosComponent,
@@ -47,10 +45,6 @@ import { RegistrarService } from './services/registrar.service';
     SidebarComponent,
     NavbarComponent,
     FooterComponent,
-    NewProdDirective,
-
-    DynamicComponent,
-
     DetallePedidoComponent
     
 
@@ -62,6 +56,5 @@ import { RegistrarService } from './services/registrar.service';
   ],
   providers: [RegistrarService, PerfilService, PedidoService, ArticulosService],
   bootstrap: [AppComponent],
-  entryComponents: [DynamicComponent]
 })
 export class AppModule { }
