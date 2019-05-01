@@ -4,5 +4,10 @@
 }
 
 .row {
-    margin-bottom: 1%
+    margin-bottom: 1%;
+    margin-right: 5%
+}
+
+.border-bottom {
+    border-color: #8A2BE2!important
 }
