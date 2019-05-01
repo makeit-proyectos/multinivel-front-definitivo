@@ -26,7 +26,7 @@ const routes: Routes = [
         {path:'pedidos', component:PedidosComponent},
         {path:'config', component:ConfiguracionComponent},
         {path:'detalle', component:DetallePedidoComponent},
-        {path:'**', component:PerfilComponent}
+        {path:'**',  redirectTo:'home/perfil'}
     ]},
     { path: '**', redirectTo:'home/perfil'}
 
