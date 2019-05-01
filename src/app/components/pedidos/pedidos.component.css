@@ -14,18 +14,14 @@ input[type="number"] {
     margin-right: 1%
 }
 
-btn-add {
-    padding: 0%;
-    border: 2px solid #8A2BE2!important;
+.btn-add {
+    border-radius: 20px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    text-transform: none;
     color: #8A2BE2!important;
-}
-
-.btn-outline-primary {
-    padding-left: 15%!important;
-    padding-right: 15%!important
-}
-
-div.col-md-6 {
-    max-width: none;
-    display: block;
+    border-color: #8A2BE2!important;
+    background-color: white;
+    padding-left: 25%!important;
+    padding-right: 25%!important;
 }
