@@ -24,4 +24,5 @@ input[type="number"] {
     background-color: white;
     padding-left: 25%!important;
     padding-right: 25%!important;
+    width: 45px;
 }
