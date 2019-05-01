@@ -44,6 +44,14 @@ export class DetallePedidoComponent implements OnInit {
     )
     console.log(this.formElimLinea.value['linea'])
   }
+  calcuarTotal(lineasPedido:any[]){
+    let total:number=0;
+    lineasPedido.forEach(element => {
+      total=total+element.costoU*element.cantidad
+      
+    });
+    return total
+  }
 
 
 

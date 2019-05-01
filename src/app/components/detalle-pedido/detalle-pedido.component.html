@@ -1,4 +1,4 @@
-<div class="container m-2 animated fadeIn ">
+<div class="container m-4 mb-2 animated fadeIn ">
     <div class="text-center col-9">
         <p><small>
           Para pedidos mayores a 12 <br> unidades, el envio es gratis
@@ -8,14 +8,14 @@
     <h3>Detalle del pedido</h3>
     <form [formGroup]="formElimLinea" (ngSubmit)="eliminarLineas()">
         <div class="row" *ngFor="let categoria of categorias">
-            <div class="col-4">
+            <div class="col-3">
                 <h6>
                     {{categoria.categoria|uppercase}}
                 </h6>
-                <img src="/assets/img/{{categoria.categoria}}.png" class="img-cat" alt="">
+                <img src="/assets/img/{{categoria.categoria}}.png" class="img-cat" alt="" style="width: 60%">
             </div>
 
-            <table class="table col-8">
+            <table class="table  table-hover col-8 text-center">
                 <thead>
                     <tr>
                         <th scope="col"><i class="fa fa-trash" aria-hidden="true"></i></th>
@@ -23,7 +23,6 @@
                         <th scope="col">Cantidad</th>
                         <th scope="col">Precio Un.</th>
                         <th scope="col">Sub-Total</th>
-                        <th scope="col">Total</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,12 +31,20 @@
                         <th><input type="checkbox" value="{{pedido.codigo}}" (change)="cargarLinea($event,pedido.codigo)"></th>
                         <th scope="row">{{pedido.codigo}}</th>
                         <td>{{pedido.cantidad}}</td>
-                        <td>{{pedido.costoU| currency: 'USD':true:'1.2-2'}}</td>
-                        <td>{{ (pedido.cantidad * pedido.costoU)| currency: 'USD':true:'1.2-2'}}</td>
-                        <td rowspan=""></td>
+                        <td class="text-right">{{pedido.costoU| currency: 'USD':true:'1.2-2'}}</td>
+                        <td class="text-right">{{ (pedido.cantidad * pedido.costoU)| currency: 'USD':true:'1.2-2'}}</td>
                     </tr>
 
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th scope="col">Total</th>
+                        <th class="text-right">{{calcuarTotal(categoria.pedidos)| currency: 'USD':true:'1.2-2'}}</th>
+                    </tr>
+                </tfoot>
             </table>
 
 

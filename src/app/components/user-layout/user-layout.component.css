@@ -8,3 +8,7 @@
     width: 100%;
     overflow-x: hidden;
 }
+
+.sidebar {
+    background-color: #8A2BE2;
+}
