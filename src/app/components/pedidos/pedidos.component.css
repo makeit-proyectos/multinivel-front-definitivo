@@ -26,3 +26,7 @@ input[type="number"] {
     padding-right: 25%!important;
     width: 45px;
 }
+
+.border-bottom {
+    border-color: #8A2BE2!important
+}

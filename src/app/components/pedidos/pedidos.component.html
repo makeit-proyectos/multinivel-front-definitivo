@@ -6,20 +6,20 @@
         </p>
     </div>
 
-    <div class="row" *ngFor="let grupo of articulosxCat, let i=index" style="margin-bottom: 2%">
+    <div class="row border-bottom pb-2" *ngFor="let grupo of articulosxCat, let i=index" style="margin-bottom: 2%">
 
         <div class="col-md-3 text-center">
-            <label class="">
+            <label class="" style="width: 100%"> 
                   {{grupo.categoria|uppercase}}
                     </label>
-            <img src="/assets/img/{{grupo.categoria}}.png" class="img-cat " alt="" style="width: 80%">
+            <img src="/assets/img/{{grupo.categoria}}.png" class="img-cat " alt="" style="width: 65%">
         </div>
         <form (ngSubmit)="agregarPedido(form)" class="col" #form="ngForm">
             <div class="form-inline linea">
                 <div class="col-6">
                     <input [(ngModel)]="grupo.categoria" name="categoria" value="{{grupo.nombre}}" style="display:none">
                     <!-- Para agregar un item o linea de pedido al hacer click en el boton +, se agrega un elemento mas al atributo del component sobre el cual itera el siguiente ngfor correspondiente a distintas lineas de pedido de una misma categoria-->
-                    <div class=" alignCentro" [ngClass]="grupo.nombre" *ngFor="let Linea of grupo.LineadePedidos, let x=index" style="display: block">
+                    <div class=" alignCentro mb-2" [ngClass]="grupo.nombre" *ngFor="let Linea of grupo.LineadePedidos, let x=index" style="display: block">
 
                         <input [(ngModel)]="grupo.LineadePedidos[x].codigo" name="codigoL{{x}}" type="text" placeholder="Codigo o fragancia" class="form-control" />
 
