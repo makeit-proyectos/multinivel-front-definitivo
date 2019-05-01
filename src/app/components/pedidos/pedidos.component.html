@@ -8,14 +8,11 @@
 
     <div class="row" *ngFor="let grupo of articulosxCat, let i=index" style="margin-bottom: 2%">
 
-        <div class="col-3 text-center alignCentro">
+        <div class="col-md-3 text-center">
             <label class="">
-              {{grupo.categoria|uppercase}}
-                </label>
-            <!-- src/assets/img/esmalte.png
-                src/assets/img/perfume.png -->
-            <img src="/assets/img/{{grupo.categoria}}.png" class="img-cat" alt="">
-
+                  {{grupo.categoria|uppercase}}
+                    </label>
+            <img src="/assets/img/{{grupo.categoria}}.png" class="img-cat " alt="" style="width: 80%">
         </div>
         <form (ngSubmit)="agregarPedido(form)" class="col" #form="ngForm">
             <div class="form-inline linea">
